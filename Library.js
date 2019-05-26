@@ -11,14 +11,21 @@ function Book(){
 }
 
 function addBookToLibrary(book){
-    myLibrary.append(book);
+  console.log("Working");
+  var x = document.getElementById(book);
+  
+  if(x.style.visibility == "hidden"){
+    x.style.visibility= "visible";
+  }
+  else{
+    x.style.visibility= "hidden";
+  }
+ 
+   // myLibrary.append(book);
 }
 
 function render(){
-    
-    myLibrary.forEach(book =>{
-
-    });
+  
 }
 function generateTableHead(table,data) {
     let thead = table.createTHead();
@@ -40,7 +47,16 @@ function generateTable(table, data) {
       }
     }
   }
+  
 let table = document.querySelector("table");
 let data = Object.keys(myLibrary[0]);
+generateTable(table,myLibrary);
 generateTableHead(table,data);
-generateTable(table,myLibrary)
+
+let addBook = document.getElementById("addBook");
+let formDiv = document.getElementById("formDiv");
+addBook.addEventListener('click',(e)=>{
+  addBookToLibrary("formDiv");
+
+});
+
