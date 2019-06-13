@@ -20,7 +20,8 @@ function AddBookToLibrary(event){
   console.log(title);
 
 
-  myLibrary.push({title,pages,author});
+  
+  myLibrary.push({Title: title,Pages: pages,Author: author});
 
 
   console.log(myLibrary);
@@ -77,7 +78,7 @@ function render(){
 
 }
 
-let addBook = document.getElementById("addBook");
+
 let formDiv = document.getElementById("formDiv");
 let submit = document.getElementById("submit");
 let submitBtn = document.getElementById("submitBtn");
