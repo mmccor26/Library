@@ -3,14 +3,35 @@ let myLibrary = [
     {Title: "A Game of Thrones", Pages: 800,Author:"GRRM"}
 ];
 
-
-
-
-function Book(){
-    
+class Book {
+  constructor(title, author, pages) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+   
+  }
 }
 
-function addBookToLibrary(book){
+function AddBookToLibrary(event){
+  console.log(myLibrary);
+  const title = document.getElementById("Title").value;
+  const author = document.getElementById("Author").value;
+  const pages = document.getElementById("Pages").value;
+  console.log(title);
+
+
+  myLibrary.push({title,pages,author});
+
+
+  console.log(myLibrary);
+  render();
+
+  
+  event.preventDefault();
+  
+}
+
+function showForm(book){
   console.log("Working");
   var x = document.getElementById(book);
   
@@ -20,43 +41,53 @@ function addBookToLibrary(book){
   else{
     x.style.visibility= "hidden";
   }
- 
-   // myLibrary.append(book);
 }
-
-function render(){
+function generateTableHead(){
+  const table = document.querySelector("table");
+  tHead = table.createTHead();
   
+
 }
-function generateTableHead(table,data) {
-    let thead = table.createTHead();
-  let row = thead.insertRow();
-  for (let key of data) {
-    let th = document.createElement("th");
-    let text = document.createTextNode(key);
-    th.appendChild(text);
-    row.appendChild(th);
-  }
-}
-function generateTable(table, data) {
-    for (let element of data) {
-      let row = table.insertRow();
-      for (key in element) {
-        let cell = row.insertCell();
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
-      }
+function render(){ 
+  const tableBody = document.querySelector("tbody");
+
+  if (tableBody.children.length > 0) {
+    while (tableBody.children.length !== 0) {
+      tableBody.removeChild(tableBody.lastChild);
     }
   }
-  
-let table = document.querySelector("table");
-let data = Object.keys(myLibrary[0]);
-generateTable(table,myLibrary);
-generateTableHead(table,data);
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    const tableRow = document.createElement("tr");
+    
+    const title = document.createElement("td");
+    const author = document.createElement("td");
+    const pages = document.createElement("td");
+
+    tableBody.appendChild(tableRow);
+    
+    tableRow.appendChild(title);
+    tableRow.appendChild(author);
+    tableRow.appendChild(pages);
+    
+    title.innerHTML = `${myLibrary[i].Title}`;
+    author.innerHTML = `${myLibrary[i].Author}`;
+    pages.innerHTML = `${myLibrary[i].Pages}`;
+  }
+
+}
 
 let addBook = document.getElementById("addBook");
 let formDiv = document.getElementById("formDiv");
+let submit = document.getElementById("submit");
+let submitBtn = document.getElementById("submitBtn");
+submit.addEventListener('submit',AddBookToLibrary);
+
 addBook.addEventListener('click',(e)=>{
-  addBookToLibrary("formDiv");
+  showForm("formDiv");
 
 });
+render();
+
+
 
