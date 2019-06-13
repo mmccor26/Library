@@ -8,6 +8,15 @@
         <h2>Odin Library</h2>
         <div class = "container">
             <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read</th>
+                    <th>Delete Book</th>
+                    
+
+                </thead>
                 <tbody></tbody>
                 
             </table>
@@ -18,7 +27,7 @@
         </div>
         <br>
         <div id = "formDiv">
-            <form id = "submit" action="#" method="GET">
+            <form id = "submit" action="#" method="GET" onsubmit="return validateForm()">
                 Title: <br>
                 <input  type="text" id = "Title">
                 <br>
@@ -36,5 +45,6 @@
 
         <script src = "Library.js"></script>
     </body>
+    
     
 </html>

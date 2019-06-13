@@ -14,5 +14,20 @@ td{
 #formDiv{
 
     visibility: hidden;
+    align-content: center;
     
+}
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+    background-color: aqua;
+}
+button{
+  background: greenyellow;
+ 
+ 
+  
+ 
+  border-radius: 3px;
 }

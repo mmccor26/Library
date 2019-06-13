@@ -13,7 +13,8 @@ class Book {
 }
 
 function AddBookToLibrary(event){
-  console.log(myLibrary);
+  
+    
   const title = document.getElementById("Title").value;
   const author = document.getElementById("Author").value;
   const pages = document.getElementById("Pages").value;
@@ -22,6 +23,7 @@ function AddBookToLibrary(event){
   render();
 
   event.preventDefault();
+
 }
 
 function showForm(book){
@@ -59,8 +61,12 @@ function render(){
     const title = document.createElement("td");
     const author = document.createElement("td");
     const pages = document.createElement("td");
+    const readBtnHolder = document.createElement("td");
+    const deleteBtnHolder = document.createElement("td");
     const readBtn = document.createElement("button")
     const deleteBtn = document.createElement("button");
+    readBtnHolder.appendChild(readBtn);
+    deleteBtnHolder.appendChild(deleteBtn);
     deleteBtn.style.width = '50px';
     deleteBtn.style.width = '80px';
     deleteBtn.innerHTML = "Delete";
@@ -71,8 +77,8 @@ function render(){
     tableRow.appendChild(title);
     tableRow.appendChild(author);
     tableRow.appendChild(pages);
-    tableRow.appendChild(readBtn);
-    tableRow.appendChild(deleteBtn);
+    tableRow.appendChild(readBtnHolder);
+    tableRow.appendChild(deleteBtnHolder);
 
     
     title.innerHTML = `${myLibrary[i].Title}`;
@@ -99,6 +105,16 @@ function deleteBook(index){
 
   myLibrary.splice(index,1);
   render();
+}
+function validateForm() {
+  var x = document.forms["submit"]["Author"].value;
+  var y = document.forms["submit"]["Pages"].value;
+  var z = document.forms["submit"]["Title"].value;
+
+  if (x == "" || y == "" || z == "" ) {
+    alert("Please Fill Form");
+    return false;
+  }
 }
 
 
