@@ -13,7 +13,7 @@ class Book {
 }
 
 function AddBookToLibrary(event){
-  
+  if(validateForm()){
     
   const title = document.getElementById("Title").value;
   const author = document.getElementById("Author").value;
@@ -22,7 +22,7 @@ function AddBookToLibrary(event){
 
   render();
 
-  event.preventDefault();
+  event.preventDefault();}
 
 }
 
@@ -115,6 +115,7 @@ function validateForm() {
     alert("Please Fill Form");
     return false;
   }
+  return true;
 }
 
 
